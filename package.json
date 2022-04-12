@@ -2,7 +2,7 @@
     "name": "file-tree-alternative",
     "version": "2.0.3",
     "description": "This plugin allows you to have an alternative file tree view.",
-    "main": "main.js",
+    "main": "dist/main.js",
     "scripts": {
         "dev": "cross-env BUILD=dev obsidian-plugin dev src/main.ts",
         "build": "cross-env BUILD=production obsidian-plugin build src/main.ts"
