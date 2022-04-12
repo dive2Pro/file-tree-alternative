@@ -9,6 +9,7 @@ import * as recoilState from 'recoil/pluginState';
 import { useRecoilState } from 'recoil';
 import { SortType } from 'settings';
 import { ObsidianVaultConfig } from 'utils/types';
+import { openOrSwitch } from 'obsidian-community-lib'
 
 interface FilesProps {
     plugin: FileTreeAlternativePlugin;
@@ -338,7 +339,12 @@ const NavFile = (props: { file: TFile; plugin: FileTreeAlternativePlugin }) => {
 
     // Handle Click Event on File - Allows Open with Cmd/Ctrl
     const openFile = (file: TFile, e: React.MouseEvent) => {
-        Util.openFile({ file: file, app: plugin.app, newLeaf: e.ctrlKey || e.metaKey });
+        if(e.ctrlKey || e.metaKey) {
+            // @ts-ignore
+            openOrSwitch(plugin.app, file.name, e)
+        } else {
+            Util.openFile({ file: file, app: plugin.app, newLeaf: e.ctrlKey || e.metaKey });
+        }
         setActiveFile(file);
     };
 
