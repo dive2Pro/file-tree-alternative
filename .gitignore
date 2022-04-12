@@ -8,8 +8,9 @@ package-lock.json
 yarn.lock
 
 # build
-#main.js
+main.js
 *.js.map
+dist/*
 
 # obsidian
 data.json
